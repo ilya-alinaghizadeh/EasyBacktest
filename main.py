@@ -8,7 +8,7 @@ NO_GRAPGH = "no_grapgh"
 
 class BackTest:
     
-    def __init__(self , data: pd.DataFrame , load_per_step:int,
+    def __init__(self , data: pd.DataFrame , min_load:int,
                  buy_condition , sell_condition, win_percentage,
                  loss_percentage,
                  buy_tp_condition, buy_sl_condition,
@@ -19,7 +19,7 @@ class BackTest:
                  ):
         
         self.data = data
-        self.load_per_step = load_per_step
+        self.min_load = min_load
         self.buy_condition = buy_condition
         self.sell_condition = sell_condition
         self.buy_tp_condition = buy_tp_condition
@@ -38,7 +38,7 @@ class BackTest:
         
     def run(self):
         
-        for step in range(self.load_per_step , len(self.data)):
+        for step in range(self.min_load , len(self.data)):
             self.process_step(step)
             
     def process_step(self , step):

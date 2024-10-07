@@ -1,7 +1,5 @@
-# main.py
 import pandas as pd
 from main import BackTest,SAME_QUANTITY,NEW_QUANTITY,GRAPH
-import time
 
 
 
@@ -31,7 +29,7 @@ def sell_sl_condition(data, step, entry_price):
 # Initialize backtester
 backtester = BackTest(
     data=data,
-    load_per_step=1,
+    min_load=1,
     buy_condition=buy_condition,
     sell_condition=sell_condition,
     buy_tp_condition=buy_tp_condition,
@@ -51,6 +49,4 @@ backtester.run()
 
 # Print summary
 summary = backtester.summary()
-print(summary)
-summary["graph"].savefig("sds2323d")
-time.sleep(3)
+summary["graph"].savefig("graph")
